@@ -9,13 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     
-    private var name: String = "Evan"
+    @State private var name: String = ""
     private var greeting: String {
-        return "Hola, \(name) como estas"
+        return "Hola \(name), como estas?"
     }
     var body: some View {
-        Text(greeting)
-            .padding()
+        
+        VStack{
+            
+            TextField("EnterYourName", text: $name)
+            
+            
+            Text(greeting)
+                .padding()
+            
+        }
+        
     }
 }
 
