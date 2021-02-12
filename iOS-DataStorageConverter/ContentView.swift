@@ -10,15 +10,26 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var name: String = ""
+    
+    @State private var feeling: String = ""
+    
     private var greeting: String {
-        return "Hola \(name), como estas?"
+        return "Hello, \(name), you are \(feeling)?"
     }
     var body: some View {
         
-        VStack{
+        Form{
             
             TextField("EnterYourName", text: $name)
             
+            Picker("Mood", selection: $feeling) {
+                // First part is what shows
+                // Second part, the tag, is what is shown
+                Text("😃").tag("happy")
+                Text("😐").tag("fine")
+                Text("😞").tag("sad")
+            }
+            .pickerStyle(SegmentedPickerStyle())
             
             Text(greeting)
                 .padding()
